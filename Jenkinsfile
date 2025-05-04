@@ -42,9 +42,9 @@ pipeline {
                     apt-get update -qq &&
                     apt-get install -y dos2unix &&
                     cd /app &&
-                    dos2unix scripts/build_and_test.sh &&
-                    chmod +x scripts/build_and_test.sh &&
-                    ./scripts/build_and_test.sh
+                    dos2unix scripts/deploy.sh &&
+                    chmod +x scripts/deploy.sh &&
+                    ./scripts/deploy.sh
                     "
                 '''
             }
