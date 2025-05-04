@@ -6,12 +6,12 @@ pipeline {
             steps {
                 bat '''
                     docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "
-                    apt-get update -qq &&
-                    apt-get install -y dos2unix &&
-                    cd /app &&
-                    dos2unix scripts/install_dependencies.sh &&
-                    chmod +x scripts/install_dependencies.sh &&
-                    ./scripts/install_dependencies.sh
+                        apt-get update -qq &&
+                        apt-get install -y dos2unix > /dev/null &&
+                        cd /app &&
+                        dos2unix scripts/install_dependencies.sh &&
+                        chmod +x scripts/install_dependencies.sh &&
+                        ./scripts/install_dependencies.sh
                     "
                 '''
             }
@@ -26,7 +26,7 @@ pipeline {
                 bat '''
                     docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "
                     apt-get update -qq &&
-                    apt-get install -y dos2unix &&
+                    apt-get install -y dos2unix > /dev/null &&
                     cd /app &&
                     dos2unix scripts/build_and_test.sh &&
                     chmod +x scripts/build_and_test.sh &&
