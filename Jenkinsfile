@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "cd /app && ./scripts/install_dependencies.sh"'
+                bat 'docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "ls -l /app/scripts"'
             }
         }
         stage('Checkout') {
