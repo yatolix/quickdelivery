@@ -40,7 +40,7 @@ pipeline {
                 bat '''
                     docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "
                     apt-get update -qq &&
-                    apt-get install -y dos2unix &&
+                    apt-get install -y dos2unix > /dev/null &&
                     cd /app &&
                     dos2unix scripts/deploy.sh &&
                     chmod +x scripts/deploy.sh &&
