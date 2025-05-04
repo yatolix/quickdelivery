@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'scripts\\install_dependencies.bat'  // Use .bat or .ps1 files
+                bat 'wsl bash scripts/install_dependencies.sh'
             }
         }
         stage('Checkout') {
@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-                bat 'scripts\\build_and_test.bat' 
+                bat 'wsl bash scripts/build_and_test.sh' 
             }
         }
         stage('Deploy') {
             steps {
-                bat 'scripts\\deploy.bat'
+                bat 'wsl bash scripts/deploy.sh' 
             }
         }
     }
