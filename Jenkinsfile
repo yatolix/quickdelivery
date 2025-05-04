@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'wsl bash scripts/install_dependencies.sh'
+                bat 'docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "cd /app && ./scripts/install_dependencies.sh"'
             }
         }
         stage('Checkout') {
@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-                bat 'wsl bash scripts/build_and_test.sh' 
+                bat 'docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "cd /app && ./scripts/build_and_test.sh"'
             }
         }
         stage('Deploy') {
             steps {
-                bat 'wsl bash scripts/deploy.sh' 
+                bat 'docker run --rm -v "%cd%:/app" ubuntu:latest /bin/bash -c "cd /app && ./scripts/deploy.sh"' 
             }
         }
     }
